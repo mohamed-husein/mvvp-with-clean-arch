@@ -24,7 +24,7 @@ class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
 
   @override
-  _OnBoardingViewState createState() => _OnBoardingViewState();
+  State<OnBoardingView> createState() => _OnBoardingViewState();
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
@@ -121,11 +121,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               },
             ),
           ),
-
-// circle indicator
-
+          // circle indicator
           // right arrow
-
           Row(
             children: [
               for (int i = 0; i < _list.length; i++)
@@ -138,18 +135,19 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           Padding(
             padding: const EdgeInsets.all(AppPadding.p14),
             child: GestureDetector(
-                child: SizedBox(
-                  width: AppSize.s20,
-                  height: AppSize.s20,
-                  child: SvgPicture.asset(ImageAssets.rightArrowIc),
-                ),
-                onTap: () {
-                  // go to previous slide
-                  _pageController.animateToPage(_getNextIndex(),
-                      duration: const Duration(
-                          milliseconds: AppConstants.sliderAnimationTime),
-                      curve: Curves.bounceInOut);
-                }),
+              child: SizedBox(
+                width: AppSize.s20,
+                height: AppSize.s20,
+                child: SvgPicture.asset(ImageAssets.rightArrowIc),
+              ),
+              onTap: () {
+                // go to previous slide
+                _pageController.animateToPage(_getNextIndex(),
+                    duration: const Duration(
+                        milliseconds: AppConstants.sliderAnimationTime),
+                    curve: Curves.bounceInOut);
+              },
+            ),
           )
         ],
       ),
