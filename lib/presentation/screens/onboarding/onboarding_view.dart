@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:tut_app_mvvm_design_pattern/core/utils/app_colors.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/app_constants.dart';
-import 'package:tut_app_mvvm_design_pattern/core/utils/assets_manager.dart';
+import 'package:tut_app_mvvm_design_pattern/core/utils/app_assets.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/routes_manager.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/strings_manager.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/values_manager.dart';
@@ -36,19 +36,19 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         SliderObject(
             title: AppStrings.onBoardingTitle1,
             subTitle: AppStrings.onBoardingBody1,
-            image: ImageAssets.onBoardingLogo1),
+            image: AppAssets.onBoardingLogo1),
         SliderObject(
             title: AppStrings.onBoardingTitle2,
             subTitle: AppStrings.onBoardingBody2,
-            image: ImageAssets.onBoardingLogo2),
+            image: AppAssets.onBoardingLogo2),
         SliderObject(
             title: AppStrings.onBoardingTitle3,
             subTitle: AppStrings.onBoardingBody3,
-            image: ImageAssets.onBoardingLogo3),
+            image: AppAssets.onBoardingLogo3),
         SliderObject(
             title: AppStrings.onBoardingTitle4,
             subTitle: AppStrings.onBoardingBody4,
-            image: ImageAssets.onBoardingLogo4),
+            image: AppAssets.onBoardingLogo4),
       ];
 
   @override
@@ -110,7 +110,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               child: SizedBox(
                 width: AppSize.s20,
                 height: AppSize.s20,
-                child: SvgPicture.asset(ImageAssets.leftArrowIc),
+                child: SvgPicture.asset(AppAssets.leftArrowIc),
               ),
               onTap: () {
                 // go to previous slide
@@ -138,7 +138,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               child: SizedBox(
                 width: AppSize.s20,
                 height: AppSize.s20,
-                child: SvgPicture.asset(ImageAssets.rightArrowIc),
+                child: SvgPicture.asset(AppAssets.rightArrowIc),
               ),
               onTap: () {
                 // go to previous slide
@@ -157,7 +157,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   int _getPreviousIndex() {
     int previousIndex = --_currentIndex;
     if (previousIndex == -1) {
-      previousIndex = _list.length - 1;
+      previousIndex = 0;
     }
     return previousIndex;
   }
@@ -165,16 +165,16 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   int _getNextIndex() {
     int nextIndex = ++_currentIndex;
     if (nextIndex == _list.length) {
-      nextIndex = 0;
+      nextIndex = _list.length;
     }
     return nextIndex;
   }
 
   Widget _getProperCircle(int index) {
     if (index == _currentIndex) {
-      return SvgPicture.asset(ImageAssets.hollowCircleIc);
+      return SvgPicture.asset(AppAssets.hollowCircleIc,width: 15,height: 15,);
     } else {
-      return SvgPicture.asset(ImageAssets.solidCircleIc);
+      return SvgPicture.asset(AppAssets.solidCircleIc);
     }
   }
 }
