@@ -32,6 +32,7 @@ class CustomElevatedButton extends StatelessWidget {
               ? const CircularProgressIndicator()
               : CustomText.bodySmall(
                   text,
+            buildContext: context,
                 )),
     );
   }

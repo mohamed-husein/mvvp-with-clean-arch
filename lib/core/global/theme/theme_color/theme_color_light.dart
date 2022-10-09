@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tut_app_mvvm_design_pattern/core/utils/hex_color.dart';
 
 class ThemeColorLight {
-  static const Color primaryColor = Color.fromRGBO(21, 122, 247, 1);
+  static  Color primaryColor = HexColor('#ED9728');
   static const Color grayscale = Color(0xFFA3A3A3);
   static const Color grayscaleBold = Color.fromRGBO(82, 82, 82, 1);
   static const Color overLayColor = Color(0xFFEFF0F6);

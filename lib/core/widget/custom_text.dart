@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomText extends StatelessWidget {
   const CustomText(
@@ -9,6 +8,7 @@ class CustomText extends StatelessWidget {
     this.textAlign,
     this.textDirection,
     this.overflow,
+    required this.buildContext,
     this.maxLines,
   }) : super(key: key);
 
@@ -21,13 +21,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.displaySmall,
+          buildContext: buildContext,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.displaySmall,
         );
 
   /// Display Medium
@@ -39,13 +41,16 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.displayMedium,
+          buildContext: buildContext,
+          textStyle:
+              textStyle ?? Theme.of(buildContext).textTheme.displayMedium,
         );
 
   /// Display Large
@@ -57,13 +62,16 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.displayLarge,
+          textStyle:
+              textStyle ?? Theme.of(buildContext).textTheme.displayLarge,
         );
 
   /// Display Large Bold
@@ -75,13 +83,16 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.headlineLarge,
+          textStyle:
+              textStyle ?? Theme.of(buildContext).textTheme.headlineLarge,
         );
 
   /// Display Medium Bold
@@ -93,13 +104,16 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.headlineMedium,
+          buildContext: buildContext,
+          textStyle:
+              textStyle ?? Theme.of(buildContext).textTheme.headlineMedium,
         );
 
   /// Display  Small Bold
@@ -111,13 +125,16 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.headlineSmall,
+          textStyle:
+              textStyle ?? Theme.of(buildContext).textTheme.headlineSmall,
         );
 
   ///Body Small
@@ -129,13 +146,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.bodySmall,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.bodySmall,
         );
 
   ///Body Medium
@@ -146,13 +165,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.bodyMedium,
+          buildContext: buildContext,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.bodyMedium,
         );
 
   ///Body Large
@@ -164,13 +185,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.bodyLarge,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.bodyLarge,
         );
 
   CustomText.titleSmall(
@@ -181,13 +204,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.titleSmall,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.titleSmall,
         );
 
   /// black in light -- white in dark
@@ -199,13 +224,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.titleMedium,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.titleMedium,
         );
 
   CustomText.titleLarge(
@@ -216,13 +243,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.titleLarge,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.titleLarge,
         );
 
   CustomText.body2XSmall(
@@ -232,13 +261,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
+          buildContext: buildContext,
           maxLines: maxLines,
           textAlign: textAlign,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.labelSmall,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.labelSmall,
         );
 
   /// Body 2 Large
@@ -249,13 +280,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.titleLarge,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.titleLarge,
         );
 
   /// Body 2 Medium
@@ -266,13 +299,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.titleMedium,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.titleMedium,
         );
 
   /// Label
@@ -283,13 +318,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.labelSmall,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.labelSmall,
         );
 
   CustomText.labelMedium(
@@ -299,13 +336,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.labelMedium,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.labelMedium,
         );
 
   CustomText.labelLarge(
@@ -315,13 +354,15 @@ class CustomText extends StatelessWidget {
     int? maxLines,
     TextStyle? textStyle,
     TextOverflow? overflow,
+    required BuildContext buildContext,
   }) : this(
           text,
           key: key,
           maxLines: maxLines,
           textAlign: textAlign,
+          buildContext: buildContext,
           overflow: overflow,
-          textStyle: textStyle ?? Get.theme.textTheme.labelLarge,
+          textStyle: textStyle ?? Theme.of(buildContext).textTheme.labelLarge,
         );
 
   final String text;
@@ -330,12 +371,13 @@ class CustomText extends StatelessWidget {
   final TextDirection? textDirection;
   final TextOverflow? overflow;
   final int? maxLines;
+  final BuildContext buildContext;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: textStyle ?? Theme.of(context).textTheme.displayMedium,
+      style: textStyle ?? Theme.of(buildContext).textTheme.displayMedium,
       textAlign: textAlign ?? TextAlign.center,
       textDirection: textDirection,
       overflow: overflow,

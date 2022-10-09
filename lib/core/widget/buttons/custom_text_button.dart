@@ -24,9 +24,7 @@ class CustomTextButton extends StatelessWidget {
 
           /// TODO : ADD ANOTHER COLORS
           : Text(textButton,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-              )
+              style: Theme.of(context).textTheme.headlineSmall
               // isEnable
               //     ? Theme.of(context).textButtonTheme.style!.textStyle
               //     : Theme.of(context).textTheme.labelSmall!.copyWith(

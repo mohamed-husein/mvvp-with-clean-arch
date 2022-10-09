@@ -4,7 +4,7 @@ import '../../../utils/app_sizes.dart';
 import '../theme_color/theme_color_light.dart';
 
 ThemeData get getThemeDataLight => ThemeData(
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: ThemeColorLight.white,
       primaryColor: ThemeColorLight.primaryColor,
       disabledColor: ThemeColorLight.disableColor,
       splashColor: Colors.transparent,
@@ -13,14 +13,14 @@ ThemeData get getThemeDataLight => ThemeData(
         seedColor: Colors.black,
         primary: Colors.black,
       ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: ThemeColorLight.primaryColor,
         focusColor: ThemeColorLight.primaryColor,
         foregroundColor: ThemeColorLight.primaryColor,
       ),
       brightness: Brightness.light,
       errorColor: ThemeColorLight.errorColor,
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
+      progressIndicatorTheme:  ProgressIndicatorThemeData(
         color: ThemeColorLight.primaryColor,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -69,25 +69,14 @@ ThemeData get getThemeDataLight => ThemeData(
         ),
       ),
 
-      /// Tab Bar theme
-      tabBarTheme: TabBarTheme(
-        indicatorSize: TabBarIndicatorSize.tab,
-        indicator: BoxDecoration(
-          color: ThemeColorLight.grayscale,
-          borderRadius: BorderRadius.circular(AppSizes.br8),
-        ),
-        labelColor: Colors.white,
-        labelStyle: TextStyle(fontSize: AppSizes.fs14),
-        labelPadding: EdgeInsets.zero,
-        unselectedLabelStyle: TextStyle(fontSize: AppSizes.fs14),
-        unselectedLabelColor: Colors.black,
-      ),
+
 
       /// TextFormField
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: TextStyle(
           color: ThemeColorLight.labelColor,
-          fontSize: AppSizes.fs13,
+          fontSize: AppSizes.fs14,
+          fontWeight: AppFonts.regular,
           fontFamily: AppFonts.fontFamily,
         ),
         enabledBorder: OutlineInputBorder(
@@ -136,7 +125,7 @@ ThemeData get getThemeDataLight => ThemeData(
         ),
       ),
 
-      fontFamily: "Microsss",
+      fontFamily: AppFonts.fontFamily,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor:
@@ -191,106 +180,86 @@ ThemeData get getThemeDataLight => ThemeData(
     );
 
 getTextTheme() => TextTheme(
-      /// Grey Light --> Dark
+      /// Black Text
       displaySmall: TextStyle(
-        color: ThemeColorLight.grey,
-        fontSize: AppSizes.fs16,
+        color: ThemeColorLight.black,
+        fontSize: AppSizes.fs14,
         fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
       ),
       displayMedium: TextStyle(
-        color: ThemeColorLight.grayscale,
-        fontSize: AppSizes.fs32,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
+        color: ThemeColorLight.black,
+        fontSize: AppSizes.fs16,
+        fontWeight: AppFonts.semiBold,
       ),
       displayLarge: TextStyle(
         color: ThemeColorLight.grayscaleBold,
         fontSize: AppSizes.fs32,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
+        fontWeight: AppFonts.bold,
       ),
-
+      /// Orange Color
       headlineLarge: TextStyle(
-        color: ThemeColorLight.grayscale,
-        fontSize: AppSizes.fs48,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
+        color: ThemeColorLight.primaryColor,
+        fontSize: AppSizes.fs18,
+        fontWeight: AppFonts.semiBold,
       ),
       headlineMedium: TextStyle(
         color: ThemeColorLight.grayscale,
-        fontSize: AppSizes.fs32,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
+        fontSize: AppSizes.fs12,
+        fontWeight: AppFonts.bold,
       ),
+      /// text button orange
       headlineSmall: TextStyle(
-        color: ThemeColorLight.grayscale,
-        fontSize: AppSizes.fs24,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
+        color: ThemeColorLight.primaryColor,
+        fontSize: AppSizes.fs16,
+        fontWeight: AppFonts.medium,
       ),
-
       /// Body For Text in Buttons
       bodySmall: TextStyle(
         color: ThemeColorLight.white,
-        fontSize: AppSizes.fs16,
+        fontSize: AppSizes.fs17,
         fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
       ),
-      bodyMedium: TextStyle(
-        color: ThemeColorLight.black,
-        fontSize: AppSizes.fs18,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
-      ),
-      bodyLarge: TextStyle(
-        color: ThemeColorLight.black,
-        fontSize: AppSizes.fs20,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
-      ),
-
+      // bodyMedium: TextStyle(
+      //   color: ThemeColorLight.black,
+      //   fontSize: AppSizes.fs18,
+      //   fontWeight: AppFonts.regular,
+      // ),
+      // bodyLarge: TextStyle(
+      //   color: ThemeColorLight.black,
+      //   fontSize: AppSizes.fs20,
+      //   fontWeight: AppFonts.regular,
+      // ),
       /// Title
-      titleSmall: TextStyle(
-        color: ThemeColorLight.black,
-        fontSize: AppSizes.fs11,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
-      ),
-
+      // titleSmall: TextStyle(
+      //   color: ThemeColorLight.black,
+      //   fontSize: AppSizes.fs11,
+      //   fontWeight: AppFonts.regular,
+      // ),
       /// black in light -- white in dark
-      titleMedium: TextStyle(
-        color: ThemeColorLight.black,
-        fontSize: AppSizes.fs13,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
-      ),
-      titleLarge: TextStyle(
-        color: ThemeColorLight.black,
-        fontSize: AppSizes.fs24,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
-      ),
-
+      // titleMedium: TextStyle(
+      //   color: ThemeColorLight.black,
+      //   fontSize: AppSizes.fs13,
+      //   fontWeight: AppFonts.regular,
+      // ),
+      // titleLarge: TextStyle(
+      //   color: ThemeColorLight.black,
+      //   fontSize: AppSizes.fs24,
+      //   fontWeight: AppFonts.regular,
+      // ),
       /// Label For (Text , Button) With Color Grey
       labelSmall: TextStyle(
         color: ThemeColorLight.labelColor,
-        fontSize: AppSizes.fs16,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
+        fontSize: AppSizes.fs14,
+        fontWeight: AppFonts.medium,
       ),
-
       labelMedium: TextStyle(
         color: ThemeColorLight.labelColor,
-        fontSize: AppSizes.fs18,
+        fontSize: AppSizes.fs14,
         fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
       ),
-
-      labelLarge: TextStyle(
-        color: ThemeColorLight.black,
-        fontSize: AppSizes.fs16,
-        fontWeight: AppFonts.regular,
-        fontFamily: AppFonts.fontFamily,
-      ),
+      // labelLarge: TextStyle(
+      //   color: ThemeColorLight.black,
+      //   fontSize: AppSizes.fs16,
+      //   fontWeight: AppFonts.regular,
+      // ),
     );

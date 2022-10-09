@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/app_sizes.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/routes_manager.dart';
-import 'package:tut_app_mvvm_design_pattern/core/utils/theme_manager.dart';
 
 import '../core/global/theme/theme_data/light.dart';
 
@@ -23,16 +22,14 @@ class _MyAppState extends State<MyApp> {
     return ScreenUtilInit(
       designSize: const Size(AppSizes.appWidth, AppSizes.appHeight),
       minTextAdapt: false,
-      builder: (context,child) {
+      builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
           initialRoute: Routes.splashRoute,
           theme: getThemeDataLight,
-
         );
       },
-
     );
   }
 }

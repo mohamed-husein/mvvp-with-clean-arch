@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppFonts {
   /// Font Name
-  static const String fontFamily = "Tajawal";
+  static const String fontFamily = "Montserrat";
 
   /// Font Weight
   static const FontWeight regular = FontWeight.w400;

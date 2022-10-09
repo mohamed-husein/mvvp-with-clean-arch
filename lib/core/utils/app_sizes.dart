@@ -24,9 +24,11 @@ class AppSizes {
   static final double fs18 = 18.0.sp;
   static final double fs15 = 15.0.sp;
   static final double fs16 = 16.0.sp;
+  static final double fs17 = 16.0.sp;
   static final double fs14 = 14.0.sp;
   static final double fs13 = 13.0.sp;
   static final double fs11 = 11.0.sp;
+  static final double fs12 = 12.0.sp;
   static final double fs10 = 10.0.sp;
   static final double fs8 = 8.0.sp;
 
@@ -100,14 +102,15 @@ class AppSizes {
   /// SizedBox Height
   static final double sizedBoxHeightSimiTiny = 5.h;
   static final double sizedBoxHeightTiny = 12.h;
-  static final double sizedBoxHeightSmall = 18.h;
+  static final double sizedBoxHeightSmall = 20.h;
   static final double sizedBoxHeightMedium = 32.h;
+  static final double sizedBoxHeight2X = 40.h;
 
   /// SizedBox Width
   static final double sizedBoxWidthSimiTiny = 5.w;
   static final double sizedBoxWidthTiny = 12.w;
-  static final double sizedBoxWidthSmall = 18.w;
-  static final double sizedBoxWidthMedium = 32.w;
+  static final double sizedBoxWidthSmall = 20.w;
+  static final double sizedBoxWidthMedium = 40.w;
 
   /// Button Sized
   static final double buttonWidthSimiSmall = widthFullScreen / 2;

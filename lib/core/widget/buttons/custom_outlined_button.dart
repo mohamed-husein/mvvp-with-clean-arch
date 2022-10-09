@@ -27,6 +27,7 @@ class CustomOutlinedButton extends StatelessWidget {
               ),
       child: CustomText.titleSmall(
         text,
+        buildContext: context,
       ),
     );
   }
