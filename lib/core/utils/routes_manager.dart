@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app_mvvm_design_pattern/core/utils/strings_manager.dart';
+import 'package:tut_app_mvvm_design_pattern/core/utils/app_constants.dart';
+import 'package:tut_app_mvvm_design_pattern/core/utils/app_constants.dart';
 import 'package:tut_app_mvvm_design_pattern/presentation/screens/forgot_password/forgot_password_view.dart';
 import 'package:tut_app_mvvm_design_pattern/presentation/screens/login/login_view.dart';
 import 'package:tut_app_mvvm_design_pattern/presentation/screens/main/main_view.dart';
-import 'package:tut_app_mvvm_design_pattern/presentation/screens/onboarding/onboarding_view.dart';
+import 'package:tut_app_mvvm_design_pattern/presentation/screens/onboard/view/onboard_view.dart';
 import 'package:tut_app_mvvm_design_pattern/presentation/screens/register/register_view.dart';
 import 'package:tut_app_mvvm_design_pattern/presentation/screens/splash/splash_view.dart';
 import 'package:tut_app_mvvm_design_pattern/presentation/screens/store_details/store_details_view.dart';
@@ -44,9 +45,9 @@ class RouteGenerator {
     return MaterialPageRoute(
       builder: (_) => Scaffold(
         appBar: AppBar(
-          title: const Text(AppStrings.noRouteFound),
+          title: const Text(AppConstants.noRouteFound),
         ),
-        body: const Center(child: Text(AppStrings.noRouteFound)),
+        body: const Center(child: Text(AppConstants.noRouteFound)),
       ),
     );
   }

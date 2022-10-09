@@ -16,7 +16,7 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   late Timer _timer;
   _startDelay() {
-    _timer = Timer(const Duration(seconds: AppConstants.splashDelay), (() => _goNext()));
+    _timer = Timer(const Duration(seconds: AppConstants.splashTimeDelay), (() => _goNext()));
   }
 
   _goNext() {

@@ -4,8 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/app_colors.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/app_constants.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/app_assets.dart';
+import 'package:tut_app_mvvm_design_pattern/core/utils/app_sizes.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/routes_manager.dart';
-import 'package:tut_app_mvvm_design_pattern/core/utils/strings_manager.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/values_manager.dart';
 
 class SliderObject {
@@ -34,20 +34,20 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   List<SliderObject> _getSliderData() => [
         SliderObject(
-            title: AppStrings.onBoardingTitle1,
-            subTitle: AppStrings.onBoardingBody1,
+            title: AppConstants.onBoardingTitle1,
+            subTitle: AppConstants.onBoardingBody1,
             image: AppAssets.onBoardingLogo1),
         SliderObject(
-            title: AppStrings.onBoardingTitle2,
-            subTitle: AppStrings.onBoardingBody2,
+            title: AppConstants.onBoardingTitle2,
+            subTitle: AppConstants.onBoardingBody2,
             image: AppAssets.onBoardingLogo2),
         SliderObject(
-            title: AppStrings.onBoardingTitle3,
-            subTitle: AppStrings.onBoardingBody3,
+            title: AppConstants.onBoardingTitle3,
+            subTitle: AppConstants.onBoardingBody3,
             image: AppAssets.onBoardingLogo3),
         SliderObject(
-            title: AppStrings.onBoardingTitle4,
-            subTitle: AppStrings.onBoardingBody4,
+            title: AppConstants.onBoardingTitle4,
+            subTitle: AppConstants.onBoardingBody4,
             image: AppAssets.onBoardingLogo4),
       ];
 
@@ -82,7 +82,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   Navigator.pushReplacementNamed(context, Routes.loginRoute);
                 },
                 child: Text(
-                  AppStrings.skip,
+                  AppConstants.skip,
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.end,
                 ),
@@ -146,6 +146,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     duration: const Duration(
                         milliseconds: AppConstants.sliderAnimationTime),
                     curve: Curves.bounceInOut);
+
+                print(AppSizes.heightFullScreen);
               },
             ),
           )
