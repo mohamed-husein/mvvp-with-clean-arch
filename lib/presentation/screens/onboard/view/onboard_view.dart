@@ -7,18 +7,8 @@ import 'package:tut_app_mvvm_design_pattern/core/utils/app_assets.dart';
 import 'package:tut_app_mvvm_design_pattern/core/utils/app_sizes.dart';
 import 'package:tut_app_mvvm_design_pattern/core/widget/buttons/custom_text_button.dart';
 import 'package:tut_app_mvvm_design_pattern/core/widget/custom_text.dart';
-
-class SliderObject {
-  final String title;
-  final String subTitle;
-  final String image;
-
-  SliderObject({
-    required this.title,
-    required this.subTitle,
-    required this.image,
-  });
-}
+import 'package:tut_app_mvvm_design_pattern/domain/model.dart';
+import 'package:tut_app_mvvm_design_pattern/presentation/screens/onboard/view_model/onboard_view_model.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
@@ -28,69 +18,76 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
-  late final List<SliderObject> _list = _getSliderData();
   final PageController _pageController = PageController();
-  int _currentIndex = 0;
+  final OnBoardingViewModel _viewModel = OnBoardingViewModel();
 
-  List<SliderObject> _getSliderData() => [
-        SliderObject(
-            title: AppConstants.onBoardingTitle1,
-            subTitle: AppConstants.onBoardingBody1,
-            image: AppAssets.onBoardingLogo1),
-        SliderObject(
-            title: AppConstants.onBoardingTitle2,
-            subTitle: AppConstants.onBoardingBody2,
-            image: AppAssets.onBoardingLogo2),
-        SliderObject(
-            title: AppConstants.onBoardingTitle3,
-            subTitle: AppConstants.onBoardingBody3,
-            image: AppAssets.onBoardingLogo3),
-        SliderObject(
-            title: AppConstants.onBoardingTitle4,
-            subTitle: AppConstants.onBoardingBody4,
-            image: AppAssets.onBoardingLogo4),
-      ];
+  _bind() {
+    _viewModel.starts();
+  }
+
+  @override
+  void initState() {
+    _bind();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ThemeColorLight.white,
-      appBar: const CustomAppBar(
-        title: "",
-      ),
-      body: PageView.builder(
-        controller: _pageController,
-        itemCount: _list.length,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        itemBuilder: (context, index) {
-          return OnBoardingPage(_list[index]);
-        },
-      ),
-      bottomSheet: Container(
-        color: ThemeColorLight.white,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Align(
+    return StreamBuilder<SliderViewObject>(
+      stream: _viewModel.outputSliderViewObject,
+      builder: (context, snapshot) {
+        return _getContentWidget(snapshot.data);
+      },
+    );
+  }
+
+  Widget _getContentWidget(SliderViewObject? sliderViewObject) {
+    if (sliderViewObject == null) {
+      return Container();
+    } else {
+      return Scaffold(
+        backgroundColor: ThemeColorLight.white,
+        appBar: const CustomAppBar(
+          title: AppConstants.emptyAppBar,
+        ),
+        body: PageView.builder(
+          physics: const BouncingScrollPhysics(),
+          controller: _pageController,
+          itemCount: sliderViewObject.numOfSlides,
+          onPageChanged: (index) {
+            _viewModel.onPageChanged(index);
+          },
+          itemBuilder: (context, index) {
+            return OnBoardingPage(sliderViewObject.sliderObject);
+          },
+        ),
+        bottomSheet: Container(
+          color: ThemeColorLight.white,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Align(
                 alignment: Alignment.centerRight,
                 child: CustomTextButton(
                   onPressed: () {},
                   textButton: AppConstants.skip,
-                )),
-
-            // widgets indicator and arrows
-            _getBottomSheetWidget()
-          ],
+                ),
+              ),
+              _getBottomSheetWidget(sliderViewObject)
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
-  Widget _getBottomSheetWidget() {
+  Widget _getBottomSheetWidget(SliderViewObject sliderViewObject) {
     return Container(
       color: ThemeColorLight.primaryColor,
       child: Row(
@@ -98,7 +95,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         children: [
           // left arrow
           Padding(
-            padding:  EdgeInsets.all(AppSizes.pH14),
+            padding: EdgeInsets.all(AppSizes.pH14),
             child: GestureDetector(
               child: SizedBox(
                 width: AppSizes.sizedBoxWidthSmall,
@@ -107,26 +104,26 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               ),
               onTap: () {
                 // go to previous slide
-                _pageController.animateToPage(_getPreviousIndex(),
+                _pageController.animateToPage(_viewModel.goPrevious(),
                     duration: const Duration(
                         milliseconds: AppConstants.sliderAnimationTime),
-                    curve: Curves.bounceInOut);
+                    curve: Curves.fastLinearToSlowEaseIn);
               },
             ),
           ),
           // circle indicator
-          // right arrow
           Row(
             children: [
-              for (int i = 0; i < _list.length; i++)
+              for (int i = 0; i < sliderViewObject.numOfSlides; i++)
                 Padding(
-                  padding:  EdgeInsets.all(AppSizes.pH8),
-                  child: _getProperCircle(i),
+                  padding: EdgeInsets.all(AppSizes.pH8),
+                  child: _getProperCircle(i, sliderViewObject.currentIndex),
                 )
             ],
           ),
+          // right arrow
           Padding(
-            padding:  EdgeInsets.all(AppSizes.pH14),
+            padding: EdgeInsets.all(AppSizes.pH14),
             child: GestureDetector(
               child: SizedBox(
                 width: AppSizes.sizedBoxWidthSmall,
@@ -135,10 +132,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               ),
               onTap: () {
                 // go to previous slide
-                _pageController.animateToPage(_getNextIndex(),
+                _pageController.animateToPage(_viewModel.goNext(),
                     duration: const Duration(
                         milliseconds: AppConstants.sliderAnimationTime),
-                    curve: Curves.bounceInOut);
+                    curve: Curves.fastLinearToSlowEaseIn);
               },
             ),
           )
@@ -147,24 +144,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 
-  int _getPreviousIndex() {
-    int previousIndex = --_currentIndex;
-    if (previousIndex == -1) {
-      previousIndex = 0;
-    }
-    return previousIndex;
-  }
-
-  int _getNextIndex() {
-    int nextIndex = ++_currentIndex;
-    if (nextIndex == _list.length) {
-      nextIndex = _list.length;
-    }
-    return nextIndex;
-  }
-
-  Widget _getProperCircle(int index) {
-    if (index == _currentIndex) {
+  Widget _getProperCircle(int index, int currentIndex) {
+    if (index == currentIndex) {
       return SvgPicture.asset(
         AppAssets.hollowCircleIc,
         width: 15,
@@ -188,21 +169,21 @@ class OnBoardingPage extends StatelessWidget {
       children: [
         SizedBox(height: AppSizes.sizedBoxWidthMedium),
         Padding(
-          padding:  EdgeInsets.all(AppSizes.pH8),
+          padding: EdgeInsets.all(AppSizes.pH8),
           child: CustomText.displayMedium(
             buildContext: context,
             _sliderObject.title,
           ),
         ),
         Padding(
-          padding:  EdgeInsets.all(AppSizes.pH8),
+          padding: EdgeInsets.all(AppSizes.pH8),
           child: CustomText.labelMedium(
             _sliderObject.subTitle,
             textAlign: TextAlign.center,
             buildContext: context,
           ),
         ),
-         SizedBox(height: AppSizes.sizedBoxHeight2X),
+        SizedBox(height: AppSizes.sizedBoxHeight2X),
         SvgPicture.asset(_sliderObject.image)
       ],
     );
