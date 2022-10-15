@@ -1,16 +1,10 @@
 class AppConstants{
 
-
-
-
   /// Duration Time
-
   static const int splashTimeDelay = 2;
   static const int sliderAnimationTime = 300;
 
-  /// Localization User Shipment
-
-
+  /// Localization
 
   /// Strings
   static const String noRouteFound = "No Route Found";
@@ -24,5 +18,6 @@ class AppConstants{
   static const String onBoardingBody4 = "Tut app is an awesome flutter application using clean architecture #4";
   static const String skip='Skip';
   static const String emptyAppBar='';
+
 
 }
